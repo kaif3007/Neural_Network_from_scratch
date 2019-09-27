@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[49]:
-
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,10 +8,6 @@ import sklearn.datasets
 import math
 
 get_ipython().run_line_magic('matplotlib', 'inline')
-
-
-# In[50]:
-
 
 #sigmoid activation unit calculation
 def sigmoid(Z):
@@ -30,7 +20,6 @@ def relu(Z):
     return A,Z
 
 
-# In[51]:
 
 
 #deravatives calculations
@@ -47,10 +36,9 @@ def sigmoid_backward(dA, cache):
     return dZ
 
 
-# In[52]:
 
 
-#rendom initialisation. HE for relu  ans XAVIER for tanh activation unit.
+#rendom initialisation. HE for relu  and XAVIER for tanh activation unit.
 def initialize_parameters_deep(layer_dims,activation_unit="relu"):
     parameters = {}
     L = len(layer_dims)         
@@ -67,7 +55,6 @@ def initialize_parameters_deep(layer_dims,activation_unit="relu"):
     return parameters
 
 
-# In[53]:
 
 
 def linear_forward(A, W, b):
@@ -108,7 +95,7 @@ def L_model_forward(X, parameters):
     return AL, caches
 
 
-# In[54]:
+
 
 
 #cost computation with regularisation factor.  if do not want to use ragularisation  set lambd=0.
@@ -125,7 +112,7 @@ def compute_cost(AL,Y,parameters,lambd=0):
     return cost+(lambd/(2*m))*regularisation_cost
 
 
-# In[55]:
+
 
 
 def linear_backward(dZ, cache,lambd):
@@ -176,7 +163,7 @@ def L_model_backward(AL, Y, caches,lambd):
     return grads
 
 
-# In[56]:
+
 
 
 #GRADIENT CHECKING UNIT.
@@ -247,7 +234,6 @@ def grad_check(params,grads,X,Y,dims,epsilon=1e-7):
         print("Everything is ok.")
 
 
-# In[57]:
 
 
 #GENERATE RANDOM MINI BATCHES.
@@ -315,7 +301,7 @@ def update_parameters_with_adam(parameters, grads, v, s, t, learning_rate = 0.01
     return parameters, v, s
 
 
-# In[67]:
+
 
 
 def model(X, Y,layers_dims,learning_rate = 0.0007,batch_size=64,beta1=0.9,beta2=0.999,epsilon=1e-8,epochs=200,
@@ -375,7 +361,7 @@ layers_dims = [X.shape[0], 20, 7, 5, 1]        #architechture of our neural netw
 parameters = model(X,Y,layers_dims)           #train model and get parameters.
 
 
-# In[75]:
+
 
 
 #predict function for binary classifier.
@@ -397,14 +383,8 @@ def predict(X,Y,parameters):
     return p
 
 
-# In[76]:
+
 
 
 predict(X,Y,parameters)
-
-
-# In[ ]:
-
-
-
 
